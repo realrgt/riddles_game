@@ -1,5 +1,10 @@
 [
   {
+    "id": "0",
+    "pergunta": "Quem é o autor desse jogo?",
+    "resposta": "Ergito RGT"
+  },
+  {
     "id": "1",
     "pergunta": "Quais heróis se preocupam mais com as poses para fotos do que com salvar o seu planeta?",
     "resposta": "Os TumblrCats"
