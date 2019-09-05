@@ -1125,11 +1125,6 @@
     "resposta": "Só-malha."
   },
   {
-    "id": "224",
-    "pergunta": "Qual é o animal que mais sente quando a temperatura está alta?",
-    "resposta": "A Calor-psita."
-  },
-  {
     "id": "225",
     "pergunta": "Qual animal é o melhor dos dançarinos?",
     "resposta": "O tatu-re-bola."
@@ -2188,5 +2183,10 @@
     "id": "436",
     "pergunta": "Qual é estado que gosta de cavar buracos?",
     "resposta": "Ama-pá."
+  },
+  {
+    "id": "224",
+    "pergunta": "Qual é o animal que mais sente quando a temperatura está alta?",
+    "resposta": "A Calor-psita."
   }
 ]
