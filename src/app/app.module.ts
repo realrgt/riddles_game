@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RiddleComponent } from './riddle/riddle.component';
+
+import { RiddleModule } from './riddle/riddle.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RiddleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RiddleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
