@@ -10,7 +10,7 @@ import { RiddleComponent } from './riddle.component';
   exports: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class RiddleModule {}

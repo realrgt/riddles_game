@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { RiddleModule } from './riddle/riddle.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RiddleModule } from './riddle/riddle.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RiddleModule
+    RiddleModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
