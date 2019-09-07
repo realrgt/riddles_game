@@ -12,6 +12,8 @@ declare var M: any;
 export class RiddleComponent implements OnInit {
   riddles: Riddle[];
 
+  calculatedRiddles: Riddle;
+
   constructor(private riddleService: RiddleService) {}
 
   ngOnInit() {
@@ -20,7 +22,15 @@ export class RiddleComponent implements OnInit {
       .subscribe(riddles => (this.riddles = riddles));
 
     const elem = document.querySelector('.tabs');
-    const options = {};
+    const options = {
+      duration: 500,
+      // swipeable: true
+    };
     M.Tabs.init(elem, options);
   }
+
+  getCalcRiddles(rid: Riddle[]) {
+    rid = this.riddles;
+  }
+
 }

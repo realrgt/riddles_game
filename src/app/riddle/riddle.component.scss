@@ -12,4 +12,16 @@ main {
     color: white;
   }
 
+  // Media Queries
+  @media screen and (max-width: 600px) {
+    .options-space {
+      padding: 2rem 3rem;
+      text-align: justify;
+      color: orange;
+    }
+    #tab-space {
+      margin-bottom: 20px;
+    }
+  }
+
 }
