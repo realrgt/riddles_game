@@ -1,7 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { RiddleService } from './riddle.service';
 import { Riddle } from '../core/models/riddle';
+import { map } from 'rxjs/operators';
 
 declare var M: any;
 @Component({
@@ -10,27 +11,63 @@ declare var M: any;
   styleUrls: ['./riddle.component.scss']
 })
 export class RiddleComponent implements OnInit {
-  riddles: Riddle[];
 
-  calculatedRiddles: Riddle;
+  riddles: Riddle[]; // riddles fetched form service
+
+  riddle1: Riddle = new Riddle(); // joker
+  riddle2: Riddle = new Riddle();
+  riddle3: Riddle = new Riddle();
+  riddle4: Riddle = new Riddle();
+
+  tab: string = '';
 
   constructor(private riddleService: RiddleService) {}
 
   ngOnInit() {
     this.riddleService
       .listRiddles()
-      .subscribe(riddles => (this.riddles = riddles));
+      .pipe(
+        map(docs => {
+          const counts = [];
+          for (let i = 0; i <= 3; i++) {
+            const c = Math.floor(Math.random() * (437 - 0 + 1)) + 0;
+            counts[i] = docs[c];
+          }
+          return (docs = counts);
+        })
+      )
+      .subscribe(docs => {
+        this.riddles = docs;
+        console.log(docs);
+        this.riddle1 = this.riddles[0]; // joker
+        this.riddle2 = this.riddles[1];
+        this.riddle3 = this.riddles[2];
+        this.riddle4 = this.riddles[3];
+      });
 
     const elem = document.querySelector('.tabs');
     const options = {
-      duration: 500,
-      // swipeable: true
+      duration: 500
     };
     M.Tabs.init(elem, options);
   }
 
-  getCalcRiddles(rid: Riddle[]) {
-    rid = this.riddles;
+  verify(riddleArray: Riddle[]) {
+
   }
 
+  // getCalcRiddles(allRiddles: Riddle[]) {
+  //   const counts = [];
+  //   for (let i = 0; i <= 3; i++) {
+  //     const c = this.randomInt(0, 437);
+  //     counts[i] = allRiddles[c];
+  //   }
+  //   // this.riddles = counts;
+  //   console.log(counts);
+  //   return counts;
+  // }
+
+  // randomInt(min, max) {
+  //   return Math.floor(Math.random() * (max - min + 1)) + min;
+  // }
 }
