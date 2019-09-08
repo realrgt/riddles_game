@@ -10,28 +10,58 @@
         <div class="row">
           <div class="col s12">
             <ul class="tabs blue-grey darken-1">
-              <li class="tab col s3"><a href="#test1">Opção 1</a></li>
-              <li class="tab col s3"><a href="#test2">Opção 2</a></li>
-              <li class="tab col s3"><a href="#test3">Opção 3</a></li>
-              <li class="tab col s3"><a href="#test4">Opção 4</a></li>
+              <li class="tab col s3"><a (click)="aba = 'opt1'" href="#test1">Test 1</a></li>
+              <li class="tab col s3"><a (click)="aba = 'opt2'" href="#test2">Test 2</a></li>
+              <li class="tab col s3"><a (click)="aba = 'opt3'" href="#test3">Test 3</a></li>
+              <li class="tab col s3"><a (click)="aba = 'opt4'" href="#test4">Test 4</a></li>
             </ul>
           </div>
-          <div class="col s12 options-space">
-            <div class="row">
-              <div id="tab-space" class="col s12 m9">
-                <div id="test1">{{ riddle1.answer }}</div>
-                <div id="test2">{{ riddle2.answer }}</div>
-                <div id="test3">{{ riddle3.answer }}</div>
-                <div id="test4">{{ riddle4.answer }}</div>
+          <div class="col s12 options-space" [ngSwitch]="aba">
+            <div *ngSwitchCase="'opt2'">
+              <div class="row">
+                <div class="col s12 m9">
+                  <span>{{ riddle2.answer }}</span>
+                </div>
+                <div class="col s12 m3">
+                    <a class="waves-effect waves-light btn-small right" (click)="verify(riddle2)">Button 2</a>
+                </div>
               </div>
-              <div class="col s12 m3">
-                  <a class="waves-effect waves-light btn-small right" (click)="verify()">Button</a>
+            </div>
+            <div *ngSwitchCase="'opt3'">
+              <div class="row">
+                <div class="col s12 m9">
+                  <span>{{ riddle3.answer }}</span>
+                </div>
+                <div class="col s12 m3">
+                    <a class="waves-effect waves-light btn-small right" (click)="verify(riddle3)">Button 3</a>
+                </div>
+              </div>
+            </div>
+            <div *ngSwitchCase="'opt4'">
+              <div class="row">
+                <div class="col s12 m9">
+                  <span>{{ riddle4.answer }}</span>
+                </div>
+                <div class="col s12 m3">
+                    <a class="waves-effect waves-light btn-small right" (click)="verify(riddle4)">Button 4</a>
+                </div>
+              </div>
+            </div>
+            <div *ngSwitchDefault>
+              <div class="row">
+                <div class="col s12 m9">
+                  <span>{{ riddle1.answer }}</span>
+                </div>
+                <div class="col s12 m3">
+                    <a class="waves-effect waves-light btn-small right" (click)="verify(riddle1)">Button 1</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
+
     </div>
   </div>
 </main>

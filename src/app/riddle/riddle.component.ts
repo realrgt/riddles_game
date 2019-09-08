@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 
 import { RiddleService } from './riddle.service';
 import { Riddle } from '../core/models/riddle';
@@ -19,11 +19,18 @@ export class RiddleComponent implements OnInit {
   riddle3: Riddle = new Riddle();
   riddle4: Riddle = new Riddle();
 
-  tab: string = '';
+  aba = 'one';
 
   constructor(private riddleService: RiddleService) {}
 
   ngOnInit() {
+
+    const elem = document.querySelector('.tabs');
+    const options = {
+      duration: 500
+    };
+    M.Tabs.init(elem, options);
+
     this.riddleService
       .listRiddles()
       .pipe(
@@ -45,15 +52,16 @@ export class RiddleComponent implements OnInit {
         this.riddle4 = this.riddles[3];
       });
 
-    const elem = document.querySelector('.tabs');
-    const options = {
-      duration: 500
-    };
-    M.Tabs.init(elem, options);
   }
 
-  verify(riddleArray: Riddle[]) {
-
+  verify(riddle: Riddle) {
+    console.log(riddle);
+    if (riddle.id === this.riddle1.id) {
+      alert('Correct answer');
+    } else {
+      alert('Wrong answer');
+      this.ngOnInit();
+    }
   }
 
   // getCalcRiddles(allRiddles: Riddle[]) {
