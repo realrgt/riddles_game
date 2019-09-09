@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { RiddleService } from './riddle.service';
 import { Riddle } from '../core/models/riddle';
@@ -18,6 +18,11 @@ export class RiddleComponent implements OnInit {
   riddle2: Riddle = new Riddle();
   riddle3: Riddle = new Riddle();
   riddle4: Riddle = new Riddle();
+
+  rids = [this.riddle1, this.riddle2, this.riddle3, this.riddle4];
+  mock = [0, 1, 2, 3];
+  answers = [this.riddle2, this.riddle4, this.riddle1, this.riddle3];
+
 
   aba = 'one';
 
@@ -43,13 +48,21 @@ export class RiddleComponent implements OnInit {
           return (docs = counts);
         })
       )
-      .subscribe(docs => {
+      .subscribe(async docs => {
         this.riddles = docs;
         console.log(docs);
-        this.riddle1 = this.riddles[0]; // joker
-        this.riddle2 = this.riddles[1];
-        this.riddle3 = this.riddles[2];
-        this.riddle4 = this.riddles[3];
+        // this.riddle1 = this.riddles[0]; // joker
+        // this.riddle2 = this.riddles[1];
+        // this.riddle3 = this.riddles[2];
+        // this.riddle4 = this.riddles[3];
+        this.mock.sort(() => Math.random() - 0.5);
+
+        this.rids[0] = this.riddles[0]; // joker
+        this.rids[1] = this.riddles[1];
+        this.rids[2] = this.riddles[2];
+        this.rids[3] = this.riddles[3];
+        console.log(this.rids);
+
       });
 
   }
@@ -60,7 +73,7 @@ export class RiddleComponent implements OnInit {
       alert('Correct answer');
     } else {
       alert('Wrong answer');
-      this.ngOnInit();
+      // this.ngOnInit();
     }
   }
 
@@ -78,4 +91,7 @@ export class RiddleComponent implements OnInit {
   // randomInt(min, max) {
   //   return Math.floor(Math.random() * (max - min + 1)) + min;
   // }
+
+  // mock.sort(() => Math.random() - 0.5);
+
 }
