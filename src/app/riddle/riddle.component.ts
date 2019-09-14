@@ -12,17 +12,16 @@ declare var M: any;
 })
 export class RiddleComponent implements OnInit {
 
-  riddles: Riddle[]; // riddles fetched form service
+  riddles: Riddle[];
 
-  riddle1: Riddle = new Riddle(); // joker
+  riddle1: Riddle = new Riddle();
   riddle2: Riddle = new Riddle();
   riddle3: Riddle = new Riddle();
   riddle4: Riddle = new Riddle();
 
   mock = [0, 1, 2, 3];
 
-
-  aba = 'one';
+  aba: string;
 
   constructor(private riddleService: RiddleService) {}
 
@@ -54,8 +53,6 @@ export class RiddleComponent implements OnInit {
         this.riddle3 = this.riddles[2];
         this.riddle4 = this.riddles[3];
         this.mock.sort(() => Math.random() - 0.5);
-        console.log();
-
       });
 
   }
@@ -64,27 +61,10 @@ export class RiddleComponent implements OnInit {
     console.log(riddle);
     if (riddle.id === this.riddles[this.mock[3]].id) {
       alert('Correct answer');
+      this.ngOnInit();
     } else {
       alert('Wrong answer');
-      // this.ngOnInit();
     }
   }
-
-  // getCalcRiddles(allRiddles: Riddle[]) {
-  //   const counts = [];
-  //   for (let i = 0; i <= 3; i++) {
-  //     const c = this.randomInt(0, 437);
-  //     counts[i] = allRiddles[c];
-  //   }
-  //   // this.riddles = counts;
-  //   console.log(counts);
-  //   return counts;
-  // }
-
-  // randomInt(min, max) {
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // }
-
-  // mock.sort(() => Math.random() - 0.5);
 
 }
