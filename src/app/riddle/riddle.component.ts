@@ -19,9 +19,7 @@ export class RiddleComponent implements OnInit {
   riddle3: Riddle = new Riddle();
   riddle4: Riddle = new Riddle();
 
-  rids = [this.riddle1, this.riddle2, this.riddle3, this.riddle4];
   mock = [0, 1, 2, 3];
-  answers = [this.riddle2, this.riddle4, this.riddle1, this.riddle3];
 
 
   aba = 'one';
@@ -50,18 +48,13 @@ export class RiddleComponent implements OnInit {
       )
       .subscribe(async docs => {
         this.riddles = docs;
-        console.log(docs);
-        // this.riddle1 = this.riddles[0]; // joker
-        // this.riddle2 = this.riddles[1];
-        // this.riddle3 = this.riddles[2];
-        // this.riddle4 = this.riddles[3];
+        console.log(this.riddles);
+        this.riddle1 = this.riddles[0]; // joker
+        this.riddle2 = this.riddles[1];
+        this.riddle3 = this.riddles[2];
+        this.riddle4 = this.riddles[3];
         this.mock.sort(() => Math.random() - 0.5);
-
-        this.rids[0] = this.riddles[0]; // joker
-        this.rids[1] = this.riddles[1];
-        this.rids[2] = this.riddles[2];
-        this.rids[3] = this.riddles[3];
-        console.log(this.rids);
+        console.log();
 
       });
 
@@ -69,7 +62,7 @@ export class RiddleComponent implements OnInit {
 
   verify(riddle: Riddle) {
     console.log(riddle);
-    if (riddle.id === this.riddle1.id) {
+    if (riddle.id === this.riddles[this.mock[3]].id) {
       alert('Correct answer');
     } else {
       alert('Wrong answer');
